@@ -3,7 +3,7 @@ var _ = require("underscore"),
     Marionette = require("backbone.marionette"),
     OOS = require("../outofsight"),
     HomeContentView = require("./homeContentView"),
-    OOSUrl = require("../config/oosUrl"),
+    OOSUrl = require("../config/oosUrl").OOSUrl,
     template = require("../../dist/templates").home;
 
 var HomeView = Marionette.LayoutView.extend({
@@ -26,18 +26,18 @@ var HomeView = Marionette.LayoutView.extend({
     initialize: function(options) {
         // this.socket = io('http://localhost:4000');
         
-        Backbone.$.ajax({
-            url: OOSUrl + "action.php?limit=25",
-            type: 'GET',
-            crossDomain: true,
-            success : function(data){
-                OOS.vent.trigger("action:FetchedAll", data);
-            },
-            error : function (xhr, ajaxOptions, thrownError){  
-                console.log(xhr.status);          
-                console.log(thrownError);
-            } 
-        });
+        // Backbone.$.ajax({
+        //     url: OOSUrl + "action.php?limit=25",
+        //     type: 'GET',
+        //     crossDomain: true,
+        //     success : function(data){
+        //         OOS.vent.trigger("action:FetchedAll", data);
+        //     },
+        //     error : function (xhr, ajaxOptions, thrownError){  
+        //         console.log(xhr.status);          
+        //         console.log(thrownError);
+        //     } 
+        // });
 
         this.listenTo(OOS.vent, "action:Trigger",
                       this.newActionReceived);
@@ -59,7 +59,7 @@ var HomeView = Marionette.LayoutView.extend({
     },
 
     onRender: function() {
-
+        // alert("sup");
         //   socket2.on('readersData', function (data) {
         //     console.log(data);
         //     // socket.emit('my other event', { my: 'data' });
@@ -67,6 +67,15 @@ var HomeView = Marionette.LayoutView.extend({
         // this.sidebar.show(this.mainView);
         // this.rightContainer.show(this.rightContent);
         // this.famocoPreview.show(new FamocoPreviewView({collection: this.collection, pageType: this.pageType}));
+    },
+
+    onShow: function() {
+        $(".bootstrap-toggle").bootstrapSwitch({
+            'onText': 'Sold',
+            'onColor': 'success',
+            'offText': 'Available',
+            'offColor': 'danger'
+        });
     },
 
     newActionReceived: function(action) {

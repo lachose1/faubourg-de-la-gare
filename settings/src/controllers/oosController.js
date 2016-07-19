@@ -1,6 +1,7 @@
 var Backbone = require("backbone"),
     Marionette = require("backbone.marionette"),
     OOS = require("../outofsight.js"),
+    OOSHomepageUrl = require("../config/oosUrl").OOSHomepageUrl,
     // Collections
     ProjectsCollection = require("../collections/projects"),
     // Views
@@ -18,12 +19,21 @@ var Backbone = require("backbone"),
 
 var OOSController = Marionette.Controller.extend({
     initialize: function() {
-        OOS.secretKey = localStorage.getItem('secretKey');
+        OOS.username = localStorage.getItem('username');
+        OOS.userpass = localStorage.getItem('userpass');
 
         //EmulateHTTP to ensure it's going to work with the API
     },
 
     start: function() {
+        if(OOS.username != "faubourgbourg") {
+            // alert("Settings incorrect, please contact an administrator.")
+            return;
+        }
+        if(OOS.userpass != "-thisisnotasecurepassword*") {
+            // alert("Settings incorrect, please contact an administrator.")
+            return;
+        }
         this.showNavbar();
 
         // Initialize current user
@@ -42,7 +52,11 @@ var OOSController = Marionette.Controller.extend({
     },
 
     showHomePage: function() {
-        if(OOS.secretKey != "secondsecretlivestream") {
+        if(OOS.username != "faubourgbourg") {
+            alert("Settings incorrect, please contact an administrator.")
+            return;
+        }
+        if(OOS.userpass != "-thisisnotasecurepassword*") {
             alert("Settings incorrect, please contact an administrator.")
             return;
         }
@@ -71,6 +85,11 @@ var OOSController = Marionette.Controller.extend({
         OOS.mainContainer.show(new ActionsView({
             
         }));
+    },
+
+    showLogoutPage: function() {
+        localStorage.clear();
+        location.href = OOSHomepageUrl;
     },
 
     showChartPage: function() {

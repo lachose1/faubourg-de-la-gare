@@ -6,5 +6,7 @@ var OOS_API_HOST = "hugolaliberte.com";
 var OOS_API_PORT = "";
 // var POSMENU_API_ADDRESS = "http://" + POSMENU_API_HOST + ":" + POSMENU_API_PORT + "/";
 var OOS_API_ADDRESS = "http://" + OOS_API_HOST + "/sophielive/";
+var OOS_HOMEPAGE_URL = "http://faubourgdelagare.com"
 
-module.exports = OOSUrl = OOS_API_ADDRESS;
+module.exports.OOSUrl = OOS_API_ADDRESS;
+module.exports.OOSHomepageUrl = OOS_HOMEPAGE_URL;

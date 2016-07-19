@@ -66,7 +66,7 @@ var SettingsPageView = Marionette.LayoutView.extend({
     },
 
     handleAccept: function() {
-
+        location.href = window.location.hostname;
     },
 
     validate: function() {

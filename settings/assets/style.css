@@ -1,187 +1,39 @@
-@font-face {
-  font-family: Apercu;
-  src: url("../fonts/Apercu/apercu_regular.otf") format("opentype");
-}
-
-@font-face {
-  font-family: Apercu;
-  font-weight: bold;
-  src: url("../fonts/Apercu/apercu_bold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: Apercu;
-  font-style: italic;
-  src: url("../fonts/Apercu/apercu_medium_italic.otf") format("opentype");
-}
-
 html {
     position: relative;
     min-height: 100%;
 }
 
 body {
-    padding-top: 150px;
+    padding-top: 50px;
     padding-bottom: 20px;
     margin-bottom: 40px;
-    /*background-color: #000000;*/
-    /*font-family: Apercu, Arial;*/
-    color: white;
-    /*background: url("img/projects/ozone/ozone11.jpg") no-repeat center center fixed; */
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-color: black;
 }
 
-body:before {
-    content: '';
-    position: absolute;
-    width: 100%; height:100%;
-    top:0; left:0;
-    /*background:rgba(0, 0, 0, 0.5);*/
-    opacity: 1;
-}
-
-video#bgvid {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    /* background: url("img/projects/ozone/ozone11.jpg") no-repeat; */
-    background-size: cover;
-}
-
-#lock {
-    position: absolute;
-    top:0;
-    bottom:0;
-    right:0;
-    left:0;
-    overflow:hidden;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.3);
+td {
     text-align: center;
-    vertical-align: middle;
 }
 
-#lock h1 {
-  font-size: 100px;
-  /*top: 50px;*/
-  margin-top: 20%;
-  animation: breathing 2s ease-in-out infinite alternate;
-  -webkit-animation: breathing 2s ease-in-out infinite alternate;
-  -o-animation: breathing 2s ease-in-out infinite alternate; /* Opera */
-  -moz-animation: breathing 2s ease-in-out infinite alternate; /* Firefox */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #f5f5f5;
 }
 
-#past-orders-list {
-    width: 66%;
-    float: right;
-    position: relative;
-    right: -250px;
-    top: 46px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 20px;
-    text-align: left;
-}
-
-#past-orders-list li {
-  background: none;
-  border: none;
-}
-
-/*#past-orders-list > li:first-child*/
-.active-order {
-    color: rgba(255, 255, 255, 1);
-    animation: breathing 1s ease-in-out infinite alternate;
-    -webkit-animation: breathing 1s ease-in-out infinite alternate;
-    -o-animation: breathing 1s ease-in-out infinite alternate; /* Opera */
-    -moz-animation: breathing 1s ease-in-out infinite alternate; /* Firefox */
-}
-
-.done-order {
-    /*color: rgba(0, 0, 0, 1);*/
-}
-
-/*#action-list {
-  position: relative;
-  color: black;
-  width: 100px;
-  text-align: center;
-  margin-left: 50%;
-  left: -50px;
-}*/
-
-.action-list {
-    position: relative;
-    float: left;
-    width: 30%;
-    text-align: center;
-    font-size: 16px;
-    /* margin-right: 33%; */
-    margin-left: 15%;
-}
-
-.action-list a {
-    border-radius: 5px !important;
-    background: #993300;
-    color: white;
-    margin: 3px;
-    margin-top: 75px;
-}
-
-.btn-project a {
-  transition: color 0.5s ease-in-out;
-  background: none;
-  color: rgba(255, 255, 255, 0.5);
-  border: none;
-  /*height: 75px;*/
-}
-
-.btn-project a:hover {
-  background: none;
-  color: rgba(255, 255, 255, 1.0);
-  border: none;
-  animation: neon2 2s ease-in-out infinite alternate;
-  -webkit-animation: neon2 2s ease-in-out infinite alternate;
-  -o-animation: neon2 2s ease-in-out infinite alternate; /* Opera */
-  -moz-animation: neon2 2s ease-in-out infinite alternate; /* Firefox */
-}
-
-.btn-project a:active, .btn-project a:visited, .btn-project a:link {
-  background: none;
-  border: none;
-}
-
-#intro-message {
-  font-size: 1.5em;
-}
-
-#left-sidebar {
-  text-align: justify;
-  position: relative;
-  top: 0px;
-  transition: top 0.15s;
+.footer-text {
+    margin-top: 10px;
 }
 
 #logo-navbar {
-    position: relative;
-    top: -10px;
+  position: relative;
+  top: -10px;
+  max-height: 40px;
 }
 
 #main-container {
-  position: relative;
-  top: -40px;
+    position: relative;
+    margin-top: 40px;
 }
 
 #modal-container {
@@ -189,130 +41,75 @@ video#bgvid {
     margin: 0 auto;
 }
 
-#navbar-left, #navbar-right {
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+@media (min-width: 992px) {
+    .table-view {
+        left: -7.5%;
+    }
 }
 
-#projects-list {
+@media (min-width: 402px) {
+    .table-content {
+        width: 50%;
+    }
+}
+
+.table-content {
+    margin: 0 auto;
+}
+
+.busy-table {
+    -webkit-filter: grayscale(100%);
+    /* Just in case we switch browsers */
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.table-img, .timer, .cost{
+    cursor: pointer;
+}
+
+#navbar-content button, #navbar-content button:active, #navbar-content button:focus {
+    background: none;
+    border: none;
+    outline: 0;
+    color: #9d9d9d;
+}
+
+#navbar-content button:hover {
+    color: white;
+}
+
+.table-btn {
+    cursor: pointer;
+}
+
+.light-controls {
+    width: 152px;
+    margin-left: 76px;
+}
+
+.timer {
     position: relative;
-    top: 37px;
-    left: -130px;
-    transition: opacity 1s;
-    -moz-transition: opacity 1s; /* Firefox */
-    -webkit-transition: opacity 1s; /* Safari and Chrome */
-    -o-transition: opacity 1s; /* Opera */
-    opacity: 0;
+    z-index: 1000;
+    float: left;
+    font-size: 32px;
+    top: -125px;
+    margin-left: 125px;
+    color: white;
+    margin-bottom: -45px;
 }
 
-#projects-list ul {
-  list-style-type: none;
-  text-align: center;
+.cost {
+    position: relative;
+    z-index: 1000;
+    float: left;
+    font-size: 32px;
+    top: -85px;
+    margin-left: 125px;
+    color: white;
+    margin-bottom: -45px;
 }
 
-#projects-list ul li {
-  display: inline-block;
-}
-
-#projects-list ul li a {
-  color: white;
-  text-decoration: none;
-}
-
-#projects-list ul li a:hover {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-/* centered columns styles */
-.row-centered {
-    text-align:center;
-}
-
-.col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
-}
-
-/* Custom Boostrap */
-
-.nav {
-  height: 75px;
-  padding-top: 10px;
-}
-
-.navbar-default {
-  height: 100px;
-  padding-top: 25px;
-  color: white;
-  background: none;
-  /*background: rgba(255, 255, 255, 0.2);*/
-  border: none;
-  box-shadow: none;
-}
-
-.navbar-default .navbar-brand {
-  color: white;
-  /*border-right: 0.1em solid rgba(255, 255, 255, 0.25);*/
-}
-
-#navbar-right .navbar-brand {
-  font-size: 12px;
-  /*border-right: 0.1em solid rgba(255, 255, 255, 0.25);*/
-}
-
-.navbar-default .navbar-nav>li>a {
-  padding: 10px 10px 0px 0px;
-  color: white;
-}
-
-.navbar-default .navbar-nav>li>a:hover {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.navbar-default .navbar-nav>li>a:visited {
-  color: white;
-}
-
-.video-stream {
-    -ms-transform: rotate(0deg); /* IE 9 */
-    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
-    transform: rotate(0deg);
-}
-
-#video1 {
-  position: fixed;
-  top: 50%;
-  left: 15%;
-  min-width: 40%;
-  min-height: 40%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  -ms-transform: translateX(-50%) translateY(-50%) rotate(90deg);
-  -moz-transform: translateX(-50%) translateY(-50%) rotate(90deg);
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(90deg);
-  transform: translateX(-50%) translateY(-50%) rotate(90deg);
-  /* background: url("img/projects/ozone/ozone11.jpg") no-repeat; */
-  background-size: cover;
-}
-
-#video2 {
-    position: fixed;
-    top: 50%;
-    left: 39%;
-    min-width: 40%;
-    min-height: 40%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%) rotate(90deg);
-    -moz-transform: translateX(-50%) translateY(-50%) rotate(90deg);
-    -webkit-transform: translateX(-50%) translateY(-50%) rotate(90deg);
-    transform: translateX(-50%) translateY(-50%) rotate(90deg);
-    /* background: url("img/projects/ozone/ozone11.jpg") no-repeat; */
-    background-size: cover;
+#receipt-frame {
+    display: none;
 }
