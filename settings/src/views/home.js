@@ -74,9 +74,6 @@ var HomeView = Marionette.LayoutView.extend({
             'offText': 'Available',
             'offColor': 'danger'
         });
-        $('.bootstrap-toggle').on('switchChange.bootstrapSwitch', function(event, state) {
-          console.log(state); // true | false
-        });
     },
 
     newActionReceived: function(action) {
@@ -98,6 +95,28 @@ var HomeView = Marionette.LayoutView.extend({
         condos = JSON.parse(condos);
         condos.forEach(function(condo) {
             $( "input[name='condo-" + condo.name + "']" ).bootstrapSwitch('state', (condo.sold == 1 ? true : false));
+        });
+        $('.bootstrap-toggle').on('switchChange.bootstrapSwitch', function(event, state) {
+            var data = {};
+            data.name = this.name.match(/\d+/)[0];
+            data.sold = (state ? 1 : 0);
+            // console.log(data);
+            // console.log(state); // true | false
+            Backbone.$.ajax({
+                url: OOSUrl + "condos.php",
+                type: 'PUT',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                crossDomain: true,
+                success : function(data){
+                    console.log(data);
+                    // OOS.vent.trigger("condos:FetchedAll", data);
+                },
+                error : function (xhr, ajaxOptions, thrownError){  
+                    console.log(xhr.status);          
+                    console.log(thrownError);
+                } 
+            });
         });
     }
 
