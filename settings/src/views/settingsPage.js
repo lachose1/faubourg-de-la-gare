@@ -46,7 +46,8 @@ var SettingsPageView = Marionette.LayoutView.extend({
 
     onShow: function() {
         //console.log(this.collection);
-        $("#kiosk-name").val(OOS.kioskID);
+        $("#user-name").val(OOS.username);
+        $("#user-pass").val(OOS.userpass);
     },
 
     handleSaveSettings: function() {
@@ -66,7 +67,7 @@ var SettingsPageView = Marionette.LayoutView.extend({
     },
 
     handleAccept: function() {
-        location.href = window.location.hostname;
+        location.href = "http://faubourgdelagare.com/settings/";
     },
 
     validate: function() {
