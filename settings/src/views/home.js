@@ -1,6 +1,7 @@
 var _ = require("underscore"),
     Backbone = require("backbone"),
     Marionette = require("backbone.marionette"),
+    // jsonfile = require('jsonfile'),
     OOS = require("../outofsight"),
     HomeContentView = require("./homeContentView"),
     OOSUrl = require("../config/oosUrl").OOSUrl,
@@ -24,27 +25,12 @@ var HomeView = Marionette.LayoutView.extend({
     },
 
     initialize: function(options) {
-        // this.socket = io('http://localhost:4000');
-        
-        // Backbone.$.ajax({
-        //     url: OOSUrl + "action.php?limit=25",
-        //     type: 'GET',
-        //     crossDomain: true,
-        //     success : function(data){
-        //         OOS.vent.trigger("action:FetchedAll", data);
-        //     },
-        //     error : function (xhr, ajaxOptions, thrownError){  
-        //         console.log(xhr.status);          
-        //         console.log(thrownError);
-        //     } 
-        // });
-
         this.listenTo(OOS.vent, "action:Trigger",
                       this.newActionReceived);
         this.listenTo(OOS.vent, "action:Finished",
                       this.actionFinished);
-        this.listenTo(OOS.vent, "action:FetchedAll",
-                      this.actionsFetched);
+        this.listenTo(OOS.vent, "condos:FetchedAll",
+                      this.condosFetched);
 
         // this.mainView = new HomeContentView();
         // switch(this.contentType){
@@ -59,6 +45,18 @@ var HomeView = Marionette.LayoutView.extend({
     },
 
     onRender: function() {
+        Backbone.$.ajax({
+            url: OOSUrl + "condos.php",
+            type: 'GET',
+            crossDomain: true,
+            success : function(data){
+                OOS.vent.trigger("condos:FetchedAll", data);
+            },
+            error : function (xhr, ajaxOptions, thrownError){  
+                console.log(xhr.status);          
+                console.log(thrownError);
+            } 
+        });
         // alert("sup");
         //   socket2.on('readersData', function (data) {
         //     console.log(data);
@@ -75,6 +73,9 @@ var HomeView = Marionette.LayoutView.extend({
             'onColor': 'success',
             'offText': 'Available',
             'offColor': 'danger'
+        });
+        $('.bootstrap-toggle').on('switchChange.bootstrapSwitch', function(event, state) {
+          console.log(state); // true | false
         });
     },
 
@@ -93,19 +94,10 @@ var HomeView = Marionette.LayoutView.extend({
         $("#past-orders-list li").removeClass("active-order");
     },
 
-    actionsFetched: function(actions) {
-        actions = JSON.parse(actions);
-        actions.forEach(function(action) {
-            var dateReceived = new Date(action.date_added * 1000);
-            var dateString = dateReceived.getDate() + "/" + ('0' + (dateReceived.getMonth() + 1).toString()).slice(-2) + " - " + dateReceived.toLocaleTimeString();
-
-            var timeRemaining =  action.duration - ((Math.floor(new Date() / 1000.0) - action.date_added));
-
-            var activeClass = (timeRemaining > 0) ? " active-order" : "";
-            $("#past-orders-list").append('<li class="list-group-item' + activeClass + '">' + action.action_text + '<br />' + dateString + '</li>');
-            if(timeRemaining > 0) {
-                setTimeout(function(){ OOS.vent.trigger("action:Finished"); }, timeRemaining * 1000);
-            }
+    condosFetched: function(condos) {
+        condos = JSON.parse(condos);
+        condos.forEach(function(condo) {
+            $( "input[name='condo-" + condo.name + "']" ).bootstrapSwitch('state', (condo.sold == 1 ? true : false));
         });
     }
 
