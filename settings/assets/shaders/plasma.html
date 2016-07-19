@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Plasma Shader</title>
+    <style>
+		* { margin:0; padding:0; } /* to remove the top and left whitespace */
+
+		html, body { width:100%; height:100%; } /* just to be sure these are full screen*/
+
+		canvas { display:block; } /* To remove the scrollbars */
+	</style>
+  </head>
+  <body>
+  	<script type="text/javascript">// <![CDATA[
+	  var gl;
+	  var canvas;
+	  var buffer;
+	  var startTime = Date.now();
+	 
+	  window.onload = init;
+	 
+	  function init() {
+		var shaderScript;
+		var shaderSource;
+		var vertexShader;
+		var fragmentShader;
+	 
+		canvas        = document.getElementById('glscreen');
+		gl            = canvas.getContext('experimental-webgl');
+		canvas.width  = window.innerWidth;
+		canvas.height = window.innerHeight;
+	 
+		gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+
+		buffer = gl.createBuffer();
+		gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+		gl.bufferData(
+			gl.ARRAY_BUFFER,
+			new Float32Array([
+				-1.0, -1.0,
+				1.0, -1.0,
+				-1.0, 1.0,
+				-1.-0, 1.0,
+				1.0, -1.0,
+				1.0, 1.0]),
+			gl.STATIC_DRAW
+		);
+
+		// resize the canvas to fill browser window dynamically
+	    window.addEventListener('resize', resizeCanvas, false);
+
+	    function resizeCanvas() {
+	    	// alert("caca");
+	            canvas.width = window.innerWidth;
+	            canvas.height = window.innerHeight;
+
+	            /**
+	             * Your drawings need to be inside this function otherwise they will be reset when 
+	             * you resize the browser window and the canvas goes will be cleared.
+	             */
+	            shaderScript = document.getElementById("2d-vertex-shader");
+				shaderSource = shaderScript.text;
+				vertexShader = gl.createShader(gl.VERTEX_SHADER);
+				gl.shaderSource(vertexShader, shaderSource);
+				gl.compileShader(vertexShader);
+
+				shaderScript   = document.getElementById("2d-fragment-shader");
+				shaderSource   = shaderScript.text;
+				fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+				gl.shaderSource(fragmentShader, shaderSource);
+				gl.compileShader(fragmentShader);
+
+				program = gl.createProgram();
+				gl.attachShader(program, vertexShader);
+				gl.attachShader(program, fragmentShader);
+				gl.linkProgram(program);	
+				gl.useProgram(program);
+
+	            render(); 
+	    }
+	    resizeCanvas();
+	 
+	  }
+	 
+	  function render() {
+	 
+	    window.requestAnimationFrame(render, canvas);
+	 
+	    gl.clearColor(1.0, 0.0, 0.0, 1.0);
+	    gl.clear(gl.COLOR_BUFFER_BIT);
+
+		positionLocation = gl.getAttribLocation(program, "a_position");
+		gl.enableVertexAttribArray(positionLocation);
+		gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+		timeLocation = gl.getUniformLocation(program, "time");
+		gl.uniform1f(timeLocation, (Date.now() - startTime) / 1500.0);
+		scaleLocation = gl.getUniformLocation(program, "scale");
+		gl.uniform1f(scaleLocation, 0.03);
+		
+  		gl.drawArrays(gl.TRIANGLES, 0, 6);
+	  }
+	</script>
+
+	<script id="2d-vertex-shader" type="x-shader/x-vertex">
+	attribute vec2 a_position;
+	  void main() {
+	    gl_Position = vec4(a_position, 0, 1);
+	  }
+	</script>
+
+	<script id="2d-fragment-shader" type="x-shader/x-fragment">
+	#define PI 3.1415926535897932384626433832795
+	precision mediump float;
+	uniform float time;
+	uniform float scale;
+		void main() {
+			float colorIntensity = 0.0;
+			vec2 c = gl_FragCoord.xy * scale - scale / 2.;
+
+			colorIntensity += sin((c.s + time));
+			colorIntensity += sin((c.s + time) / 2.0);
+			colorIntensity += sin((c.s + c.t + time) / 2.0);
+
+			c += scale / 2. * vec2(sin(time / 3.0), cos(time / 2.0));
+	
+			colorIntensity += sin(sqrt(pow(c.s, 2.) + pow(c.t, 2.) + 1.) + time);
+
+			colorIntensity = colorIntensity / 2.;
+	
+			float r = tan(colorIntensity * PI);
+			float g = tan(colorIntensity * PI);
+			float b = tan(colorIntensity * PI);
+			vec4 color = vec4(r, g, b, 1.0);
+
+			gl_FragColor = color;
+		  }
+	</script>
+
+    <canvas id="glscreen"></canvas>
+  </body>
