@@ -60,6 +60,57 @@ body {background-color:none;}
 
  
 <img src="images/plans/plans-1850-laframboise-etage-4-b.png" alt="" usemap="#Map">
+<script type="text/javascript">
+	function getObjects(obj, key, val) {
+	    var objects = [];
+	    for (var i in obj) {
+	        if (!obj.hasOwnProperty(i)) continue;
+	        if (typeof obj[i] == 'object') {
+	            objects = objects.concat(getObjects(obj[i], key, val));    
+	        } else 
+	        //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+	        if (i == key && obj[i] == val || i == key && val == '') { //
+	            objects.push(obj);
+	        } else if (obj[i] == val && key == ''){
+	            //only add if the object is not already in the array
+	            if (objects.lastIndexOf(obj) == -1){
+	                objects.push(obj);
+	            }
+	        }
+	    }
+	    return objects;
+	}
+
+	var xhttp = new XMLHttpRequest();
+	var condos = [401, 402, 403, 404];
+	xhttp.onreadystatechange = function() {
+	  if (xhttp.readyState == 4 && xhttp.status == 200) {
+	  	var data = JSON.parse(xhttp.responseText);
+	  	// console.log(getObjects(data, "name", 101));
+	  	condos.forEach(function(condo) {
+	  		var condoObj = getObjects(data, "name", condo)[0];
+	  		var name = condoObj.name;
+	  		var sold = condoObj.sold;
+	  		var condoId = "sold-" + name.substr(name.length - 1);
+	  		var venduClass = "sold-logo" + (sold == 1 ? "" : " hidden");
+	  		// console.log(condoClass);
+	  		// console.log(sold);
+	  		document.getElementById(condoId).className = venduClass;
+	  		// console.log(getObjects(data, "name", condo)[0].name.substr(id.length - 1));
+        });
+	    // console.log();
+	    // console.log(condos);
+	  }
+	};
+	xhttp.open("GET", "http://faubourgdelagare.com/settings/condos.php", true);
+	xhttp.send();
+
+</script>
+
+<img src="images/plans/vendu.png" id="sold-1" class="sold-logo hidden" alt="Sold">
+<img src="images/plans/vendu.png" id="sold-2" class="sold-logo hidden" alt="Sold">
+<img src="images/plans/vendu.png" id="sold-3" class="sold-logo hidden" alt="Sold">
+<img src="images/plans/vendu.png" id="sold-4" class="sold-logo hidden" alt="Sold">
 <map name="Map">
   <area shape="rect" coords="459,368,544,452" href="plans-1850-laframboise-etage-4-13-b.html">
   <area shape="rect" coords="273,366,357,451" href="plans-1850-laframboise-etage-4-14-b.html">

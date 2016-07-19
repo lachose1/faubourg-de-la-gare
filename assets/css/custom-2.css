@@ -37,7 +37,46 @@
 /***********************************************************************************
  *	+ TYPOGRAPHY
  ***********************************************************************************/
- 
+ 	.sold-logo {
+ 		z-index: 1000;
+ 		position: absolute;
+ 		max-width: 200px;
+ 	}
+
+ 	#sold-1 {
+	    top: 310px;
+    	left: 415px;
+ 	}
+
+ 	#sold-2 {
+	    top: 310px;
+    	left: 215px;
+ 	}
+
+ 	#sold-3 {
+	    top: 40px;
+    	left: 215px;
+ 	}
+
+ 	#sold-4 {
+	    top: 40px;
+    	left: 415px;
+ 	}
+
+ 	#sold-5 {
+	    top: 275px;
+    	left: 245px;
+ 	}
+
+ 	#sold-6 {
+	    top: 20px;
+	    left: 245px;
+ 	}
+
+ 	.hidden {
+ 		display: none;
+ 	}
+
 	body {
 		font: 16px/30px "Open Sans", Arial, sans-serif;
 		background-color: none;
