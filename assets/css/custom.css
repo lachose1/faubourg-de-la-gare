@@ -37,7 +37,6 @@
 /***********************************************************************************
  *	+ TYPOGRAPHY
  ***********************************************************************************/
- 
 	body {
 		font: 16px/30px "Open Sans", Arial, sans-serif;
 		background-color: #fff;
@@ -2217,6 +2216,15 @@
 	#section-2 {
 		padding: 200px 0;
 		margin-top: 50px;
+	}
+
+	#section-2-5 {
+		padding: 200px 0;
+		margin-top: 50px;
+	}
+
+	#section-2-5 .half-image-left, #section-2-5 .half-image-right{
+		background-color: rgba(0, 0, 0, 0);
 	}
 	
 	#section-3 {
