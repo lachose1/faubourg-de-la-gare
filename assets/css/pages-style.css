@@ -71,13 +71,46 @@
 		max-width: 100%;
 		text-align: center;
 	}
+
+	.col-sm-9 {
+		width: 75%;
+	    display: block;
+	    float: left;
+	}
+
+	.col-sm-3 {
+		width: 25%;
+	    display: block;
+	    float: left;
+	}
 	
 	@media (max-width: 767px) {
-		
-		#logo {
-			margin-right: 60px;
+			
+		.col-sm-9 {
+			width: 75%;
+		    display: block;
+		    float: left;
 		}
-		
+
+		.col-sm-3 {
+			width: 25%;
+		    display: block;
+		    float: left;
+		}
+
+		#logo {
+			/*margin-right: 60px;*/
+		}
+
+		#logo img {
+			width: 70%;
+		}
+	}
+
+	@media (max-width: 400px) {
+		#logo img {
+			width: 60%;
+		}
 	}
 
 /***********************************************************************************
@@ -372,16 +405,7 @@
 		
 	}
 	
-	@media (max-width: 767px) {
-		
-		#mobile-menu-button {
-			position: absolute;
-			top: -50px;
-			right: 15px;
-			margin-top: 0;
-		}
-		
-	}
+
 	
 /***********************************************************************************
  *	- SOCIAL MEDIA
@@ -1190,7 +1214,7 @@
 		}
 		
 		.blog-article-thumbnail:before {
-			margin: -10px -10px 10px;
+			margin: -10px -10px -10px;
 		}
 		
 		.blog-article-details {

@@ -335,7 +335,27 @@
 /***********************************************************************************
  *	+ HEADLINE
  ***********************************************************************************/
-	
+	@media (max-width: 767px) {
+		.tp-caption {
+			max-width: 100%;
+    		font-size: 4em !important;
+		}
+	}
+
+	@media (max-width: 500px) {
+		.tp-caption {
+			max-width: 80%;
+    		font-size: 3em !important;
+		}
+	}
+
+	@media (max-width: 435px) {
+		.tp-caption {
+			max-width: 60%;
+    		font-size: 2em !important;
+		}
+	}
+
 	.headline {
 		margin-bottom: 40px;
 	}
