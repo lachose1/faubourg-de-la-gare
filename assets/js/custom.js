@@ -5,6 +5,45 @@
  */
 
 (function($){
+	$("area").each(function() {
+	    $(this).attr("coords-original", $(this).attr("coords"));
+	});
+
+	if($(window).width() < 900) {
+		var coefficient = $(window).width() / 900;
+		// console.log(winWidth / 900);
+		$("area").each(function() {
+		    var pairs = $(this).attr("coords-original").split(', ');
+		    for(var i=0; i<pairs.length; i++) {
+		        var nums = pairs[i].split(',');
+		        for(var j=0; j<nums.length; j++) {
+		            nums[j] = parseFloat(nums[j]) * coefficient;
+		        }
+		        pairs[i] = nums.join(',');
+		    }
+		    $(this).attr("coords", pairs.join(', '));
+		});
+	}
+
+	$(window).resize(function() {
+		var winWidth = $(window).width();
+		if(winWidth < 900) {
+			var coefficient = winWidth / 900;
+			// console.log(winWidth / 900);
+			$("area").each(function() {
+			    var pairs = $(this).attr("coords-original").split(', ');
+			    for(var i=0; i<pairs.length; i++) {
+			        var nums = pairs[i].split(',');
+			        for(var j=0; j<nums.length; j++) {
+			            nums[j] = parseFloat(nums[j]) * coefficient;
+			        }
+			        pairs[i] = nums.join(',');
+			    }
+			    $(this).attr("coords", pairs.join(', '));
+			});
+		}
+	});
+
 	
 	"use strict";
 	
