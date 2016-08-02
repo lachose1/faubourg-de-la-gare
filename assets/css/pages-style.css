@@ -49,13 +49,13 @@
 				transition: all 0.3s;
 	}
 	
-	@media (max-width: 767px) {
+	/*@media (max-width: 767px) {
 		
 		#header-container {
 			padding: 0;
 		}
 		
-	}
+	}*/
 	
 /***********************************************************************************
  *	- LOGO

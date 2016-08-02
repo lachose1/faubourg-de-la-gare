@@ -75,7 +75,7 @@
 	
 	h4 {
 		margin-bottom: 8px;
-		font-size: 24px;
+		font-size: 1em;
 		line-height: 34px;
 	}
 	
@@ -345,26 +345,35 @@
 /***********************************************************************************
  *	+ HEADLINE
  ***********************************************************************************/
+ 	#tp-caption-contact {
+ 		font-size: 70px;
+ 	}
 	@media (max-width: 767px) {
-		.tp-caption {
+		#contact-col-sm-3 {
+	 		width: 100%;
+	 	}
+	}
+ 	
+/*	@media (max-width: 767px) {
+		.tp-caption .text-parallax-content {
 			max-width: 100%;
-    		font-size: 4em !important;
+    		font-size: 0.5em !important;
 		}
 	}
 
 	@media (max-width: 500px) {
-		.tp-caption {
+		.tp-caption .text-parallax-content {
 			max-width: 80%;
-    		font-size: 3em !important;
+    		font-size: 0.4em !important;
 		}
 	}
 
 	@media (max-width: 435px) {
-		.tp-caption {
+		.tp-caption .text-parallax-content {
 			max-width: 60%;
-    		font-size: 2em !important;
+    		font-size: 0.3em !important;
 		}
-	}
+	}*/
 
 	.headline {
 		margin-bottom: 40px;

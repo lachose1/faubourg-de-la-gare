@@ -127,45 +127,48 @@
 		
 		<!-- PAGE CONTENT -->
 		<div id="page-content">
-			
-			<div id="page-header" class="parallax" data-stellar-background-ratio="0.1" style="background-image:url(images/contact/contact.jpg);"> 
-				<div id="page-header-content">
-					
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="tp-caption text-left title"
-                                 data-x="left"
-                                 data-y="center"
-								 data-hoffset="30"
-                                 data-speed="700"
-                                 data-start="1600"
-                                 data-transform_in="o:0;s:700;"
-                                 data-transform_out="o:0;s:700;">
-								 <div class="text-parallax" data-stellar-background-ratio="0.1" style="background-image:url(images/backgrounds/text-1.jpg);">
-									<div class="text-parallax-content">VENEZ NOUS<br> RENCONTRER</div>
-								 </div><!-- text-parallax -->
-							</div>
-								
-							</div><!-- col -->
-						</div><!-- row -->
-					</div><!-- container -->
+			<div class="rev_slider_wrapper ">
+                <div class="rev_slider" data-version="5.0">
+                    <ul>
+                        <li data-transition="fade">
 
-				</div><!-- page-header-content -->
-				
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
+                            <img src="images/contact/contact.jpg" alt="">
+
+                            <div class="tp-caption"
+                                 data-x="center"
+                                 data-y="center"
+                                 data-speed="700"
+                                 data-start="1200"
+                                 data-transform_in="sX:0;sY:0;s:700;"
+                                 data-transform_out="sX:0;sY:0;s:700;">
+								<!-- <img src="images/index/revolution-slider/slide-1-image-1.png" alt=""> -->
+                            </div>
 							
-							<ol class="breadcrumb">
-								<li><a href="index.html">Accueil</a></li>
-							</ol>
+							<div id="tp-caption-contact" class="tp-caption title-big"
+                                 data-x="center"
+                                 data-y="330"
+                                 data-speed="700"
+                                 data-start="1800"
+                                 data-transform_in="o:0;y:-100;s:700;"
+                                 data-transform_out="o:0;y:-100;s:700;">
+								 Venez nous rencontrer
+                            </div>
+
 							
-						</div><!-- col -->
-					</div><!-- row -->
-				</div><!-- container -->
-				
-			</div><!-- page-header -->
+							<div class="tp-caption scroll-down"
+                                 data-x="center"
+                                 data-y="bottom"
+                                 data-speed="700"
+                                 data-start="2500"
+                                 data-transform_in="o:0;y:100;s:700;"
+                                 data-transform_out="o:0;y:100;s:700;">
+								 <a href="#go-down">scroll <br> <i class="fa fa-long-arrow-down"></i></a>
+                            </div>
+							
+						</li>
+					</ul>
+				</div><!-- rev_slider -->
+			</div><!-- rev_slider_wrapper -->
             <br><br><br>
             <div class="container">
                 <div class="row">
@@ -203,7 +206,7 @@
                         </form>
 						
 					</div><!-- col -->
-					<div class="col-sm-3">
+					<div class="col-sm-3" id="contact-col-sm-3">
 						<br><br>
 						<div class="widget widget-contact">
 						
