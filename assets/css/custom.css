@@ -157,6 +157,13 @@
 		line-height: inherit;
 	}
 	
+	 @media (min-width: 900px) {
+	 	#plan-iframe {
+			margin-left: 50%;
+			left: -450px;
+			position: relative;
+	 	}
+	 }
 	/* MOBILE PLANS */
 	/*#plan-iframe {
 		display: block;
