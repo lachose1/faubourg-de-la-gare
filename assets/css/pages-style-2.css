@@ -265,6 +265,16 @@
 		}
 		
 	}
+
+	.occupation2017 {
+		position: relative;
+	    color: white;
+	    font: 16px/30px "Open Sans", Arial, sans-serif;
+	    font-weight: bold;
+	    text-align: center;
+	    padding: 6px;
+	    border: 1px solid red;
+	}
 	
 /***********************************************************************************
  *	- MOBILE MENU
